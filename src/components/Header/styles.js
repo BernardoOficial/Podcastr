@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 const Wrapper = styled.header`
     width: 100%;
-    max-width: 1016px;
     padding: 2rem 4rem;
     background-color: var(--white);
 
@@ -16,12 +15,24 @@ const Wrapper = styled.header`
 Wrapper.Slogan = styled.h4`
     font-size: 0.875rem;
     color: var(--gray-500);
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -2rem;
+        width: 1px;
+        height: 100%;
+        background-color: var(--gray-100);
+    }
 `
 
 Wrapper.Data = styled.h4`
     justify-self: end;
     font-size: 0.875rem;
     color: var(--gray-500);
+    text-transform: capitalize;
 `
 
 export default Wrapper;

@@ -1,6 +1,13 @@
+import format from 'date-fns/format';
+import ptBR from 'date-fns/locale/pt-BR';
+
 import Wrapper from './styles';
 
 function Header() {
+
+    const currentDate = format(new Date(), 'EEEEEE, d MMMM', {
+        locale: ptBR,
+    })
 
     return (
         <Wrapper>
@@ -10,7 +17,7 @@ function Header() {
 
             <Wrapper.Slogan>O melhor para você ouvir, sempre</Wrapper.Slogan>
 
-            <Wrapper.Data>Qui, 8 Abril</Wrapper.Data>
+            <Wrapper.Data>{currentDate}</Wrapper.Data>
         </Wrapper>
     );
 }
