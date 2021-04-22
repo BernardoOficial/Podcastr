@@ -6,6 +6,13 @@ const Container = styled.section`
 
   & > section {
     flex-grow: 1;
+
+    & > main {
+      width: 100%;
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 3rem 0;
+    }
   }
 `;
 
