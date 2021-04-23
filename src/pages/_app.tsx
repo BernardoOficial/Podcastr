@@ -11,8 +11,6 @@ function MyApp({ Component, pageProps }) {
     <Container>
       <GlobalStyle />
 
-      {console.log(pageProps)}
-
       <EpisodesProvider
         episodes={pageProps.episodes}
       >

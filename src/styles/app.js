@@ -9,9 +9,9 @@ const Container = styled.section`
 
     & > main {
       width: 100%;
-      max-width: 880px;
-      margin: 0 auto;
-      padding: 3rem 0;
+      height: calc(100vh - 6.75rem);
+      padding: 3rem 4rem;
+      overflow-y: scroll;
     }
   }
 `;
