@@ -12,28 +12,10 @@ import ptBR from "date-fns/locale/pt-BR";
 
 import LastReleases from "../components/LastReleases";
 import AllEpisodes from "../components/AllEpisodes";
-
-interface EpisodesFileType {
-  url: string,
-  type: string,
-  duration: number
-}
-
-interface EpisodesType {
-  id: string,
-  title: string,
-  members: string,
-  published_at: string,
-  thumbnail: string,
-  description: string,
-  file: EpisodesFileType
-}
-
-interface HomeProps {
-  episodes: EpisodesType[]
-}
+import { convertNumberToHour } from "../utils/convertNumberToHour";
 
 export default function Home(props) {
+  
 
   // UTILIZANDO NA FORMA DE SPA
   // const [episodes, setEpisodes] = useState([]);
@@ -86,16 +68,21 @@ export async function getServerSideProps() {
       thumbnail: episode.thumbnail,
       description: episode.description,
       fileUrl: episode.file.url,
-      duration: episode.file.duration,
-      publishedAt: format(parseISO(episode.published_at), "d MMM YY", { locale: ptBR }),
+      duration: Number(episode.file.duration),
+      durationString: convertNumberToHour(Number(episode.file.duration)),
+      publishedAt: format(parseISO(episode.published_at), "d MMM yy", { locale: ptBR }),
     };
   })
 
+  const lastReleases = episodes.slice(0, 2);
+  const allEpisodes = episodes.slice(2, episodes.length);
+
   return {
     props: {
-      episodes: episodes,
-    }
-  }
+      lastReleases,
+      allEpisodes,
+    },
+  };
 }
 
 // UTILIZANDO NA FORMA DE SSG

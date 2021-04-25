@@ -1,23 +1,20 @@
 import { createContext } from "react";
 
-interface EpisodesFileType {
-  url: string;
-  type: string;
-  duration: number;
-}
-
 interface EpisodesType {
   id: string;
   title: string;
   members: string;
-  published_at: string;
+  publishedAt: string;
   thumbnail: string;
   description: string;
-  file: EpisodesFileType;
+  fileUrl: string;
+  duration: number;
+  durationString: string;
 }
 
 interface EpisodesContext {
-  episodes: EpisodesType[];
+  allEpisodes: EpisodesType[];
+  lastReleases: EpisodesType[];
 }
 
 export const EpisodesContext = createContext({} as EpisodesContext);
@@ -26,7 +23,10 @@ export const EpisodesProvider = ({ children, ...rest }) => {
 
     return (
         <EpisodesContext.Provider
-            value={{ episodes: rest.episodes }}
+            value={{ 
+              allEpisodes: rest.allEpisodes,
+              lastReleases: rest.lastReleases
+            }}
         >
             {children}
         </EpisodesContext.Provider>

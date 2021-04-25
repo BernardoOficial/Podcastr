@@ -12,7 +12,8 @@ function MyApp({ Component, pageProps }) {
       <GlobalStyle />
 
       <EpisodesProvider
-        episodes={pageProps.episodes}
+        allEpisodes={pageProps.allEpisodes}
+        lastReleases={pageProps.lastReleases}
       >
         <section>
           <Header />

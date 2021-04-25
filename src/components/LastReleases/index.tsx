@@ -1,3 +1,5 @@
+import Image from "next/image";
+import Link from "next/link";
 import { useContext, useState } from 'react';
 import { EpisodesContext } from '../../contexts/ContextEpisodes';
 
@@ -5,8 +7,7 @@ import Wrapper from './styles';
 
 function LastReleases() {
 
-    const { episodes } = useContext(EpisodesContext);
-    const [lastEpisodes, setLastEpisodes] = useState([episodes[1], episodes[2]]);
+    const { lastReleases } = useContext(EpisodesContext);
 
     return (
         <Wrapper>
@@ -14,17 +15,31 @@ function LastReleases() {
 
             <Wrapper.Cards>
 
-                {lastEpisodes.map((episode, index) => (
+                {lastReleases.map((episode, index) => (
                     <Wrapper.CardEpisodes key={index}>
 
-                        <img src={episode.thumbnail} alt={episode.title}/>
+                        <figure>
+                            <Image
+                                width="192"
+                                height="192"
+                                src={episode.thumbnail}
+                                alt={episode.title}
+                                className="thumbnail"
+                            />
+                        </figure>
 
-                        <h2>{episode.title}</h2>
+                        <h2>
+                            <Link href={`/episodes/${episode.id}`}>
+                                <a title={episode.title}>
+                                    {episode.title}
+                                </a>
+                            </Link>
+                        </h2>
 
                         <Wrapper.Informations>
                             <p>{episode.members}</p>
-                            <span className="date">8 Jan 21</span>
-                            <span className="duration">1:35:18</span>
+                            <span className="date">{episode.publishedAt}</span>
+                            <span className="duration">{episode.durationString}</span>
                         </Wrapper.Informations>
 
                         <button type="button">

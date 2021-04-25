@@ -28,21 +28,21 @@ Wrapper.Table = styled.table`
     padding: 0.5rem 0;
   }
 
-  tbody td {
-    padding: 0.8rem 0;
+  tbody tr {
+    border-bottom: 1px solid var(--gray-100);
   }
 
-  td {
-    border-bottom: 1px solid var(--gray-100);
+  tbody td {
+    padding: 0.8rem 2rem 0.8rem 0;
   }
 
   tbody td {
     vertical-align: middle;
 
-    &.title {
+    &.title a {
       display: flex;
       align-items: center;
-      
+
       font-family: Lexend, sans-serif;
       font-size: 1rem;
       font-weight: 600;
@@ -57,11 +57,24 @@ Wrapper.Table = styled.table`
       }
     }
 
-    &.members, &.date, &.duration {
+    &.members,
+    &.date,
+    &.duration {
       font-family: Inter, sans-serif;
       font-size: 0.875rem;
       font-weight: 400;
       color: var(--gray-500);
+
+      min-width: 100px;
+    }
+
+    &.button button {
+      width: 1.8rem;
+      height: 1.8rem;
+      border-radius: 0.525rem;
+      background-color: transparent;
+      border: 1px solid var(--gray-100);
+      font-size: 0;
     }
   }
 `;

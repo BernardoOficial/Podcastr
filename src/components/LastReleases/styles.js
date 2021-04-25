@@ -32,15 +32,17 @@ Wrapper.CardEpisodes = styled.article`
     box-shadow: 0 0 5px 1px var(--gray-100);
     border: 1px solid var(--gray-100);
 
-    & > img {
+    & > figure {
         grid-area: 1 / 1 / 3 / 2;
 
-        width: 100%;
-        height: 100%;
-        min-height: 6rem;
-        border-radius: 1rem;
-        object-fit: cover;
-        align-self: center;
+        img {
+            width: 100%;
+            height: 100%;
+            min-height: 6rem;
+            border-radius: 1rem;
+            object-fit: cover;
+            align-self: center;
+        }
     }
 
     & > h2 {
