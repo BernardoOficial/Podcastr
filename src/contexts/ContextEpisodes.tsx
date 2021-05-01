@@ -6,7 +6,6 @@ interface EpisodesType {
   members: string;
   publishedAt: string;
   thumbnail: string;
-  description: string;
   fileUrl: string;
   duration: number;
   durationString: string;

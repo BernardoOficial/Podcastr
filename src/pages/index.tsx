@@ -6,9 +6,10 @@
 // Forma em SSR (Server Side Rendering)
 // Forma em SSG (Static Site Generation)
 
-import { api } from "../components/services/axios";
 import { format, parseISO } from "date-fns";
 import ptBR from "date-fns/locale/pt-BR";
+
+import { api } from "../services/axios";
 
 import LastReleases from "../components/LastReleases";
 import AllEpisodes from "../components/AllEpisodes";
@@ -39,18 +40,13 @@ export default function Home(props) {
       <AllEpisodes />
 
       {console.log('Oi do jsx')}
-      {/* {episodes.map((episode, index) => <h1 key={index}>{episode.id}</h1>)} */}
-      {/* {props.episodes.map((episode, index) => <h1 key={index}>{episode.id}</h1>)} */}
 
     </main>
   )
 }
 
 // UTILIZANDO NA FORMA DE SSR
-export async function getServerSideProps() {
-
-  // const response = await fetch("http://localhost:3333/episodes");
-  // const episodes = await response.json();
+export async function getStaticProps() {
 
   const { data } = await api.get('/episodes', {
     params: {
@@ -66,7 +62,6 @@ export async function getServerSideProps() {
       title: episode.title,
       members: episode.members,
       thumbnail: episode.thumbnail,
-      description: episode.description,
       fileUrl: episode.file.url,
       duration: Number(episode.file.duration),
       durationString: convertNumberToHour(Number(episode.file.duration)),
@@ -82,11 +77,12 @@ export async function getServerSideProps() {
       lastReleases,
       allEpisodes,
     },
+    revalidate: 60 * 60 * 8, // 8 horas
   };
 }
 
 // UTILIZANDO NA FORMA DE SSG
-// export async function getStaticProps() {
+// export async function getServerSideProps() {
     
 //     const response = await fetch("http://localhost:3333/episodes");
 //     const episodes = await response.json();

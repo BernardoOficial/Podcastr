@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { useContext } from 'react';
 import { EpisodesContext } from '../../contexts/ContextEpisodes';
@@ -30,7 +31,10 @@ function AllEpisodes() {
                             <td className="title">
                                 <Link href={`/episodes/${episode.id}`}>
                                     <a title={episode.title}>
-                                        <img src={episode.thumbnail} alt={episode.title}/>
+                                        <img
+                                            src={episode.thumbnail}
+                                            alt={episode.title}
+                                        />
                                         <p>{episode.title}</p>
                                     </a>
                                 </Link>

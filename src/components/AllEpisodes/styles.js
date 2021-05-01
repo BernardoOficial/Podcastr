@@ -49,12 +49,13 @@ Wrapper.Table = styled.table`
       color: var(--gray-800);
 
       & > img {
-        width: 40px;
-        height: 40px;
-        object-fit: cover;
-        border-radius: 0.5rem;
-        margin-right: 1rem;
+          width: 40px;
+          height: 40px;
+          margin-right: 1rem;
+          object-fit: cover;
+          border-radius: 0.5rem;
       }
+      
     }
 
     &.members,
